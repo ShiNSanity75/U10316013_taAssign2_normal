@@ -54,6 +54,7 @@ public class Area extends JFrame{
 		
 		add(allCircle);
 		count.addActionListener(new ButtonCount());
+		clear.addActionListener(new ButtonClear());
 		
 	}
 	
@@ -73,6 +74,21 @@ public class Area extends JFrame{
 			//Print the result on text field
 			areaC.setText(String.format("%.2f",circle1.getArea()));
 			perimeterC.setText(String.format("%.2f",circle1.getPerimeter()));
+		}
+	}
+	
+	
+	private class ButtonClear implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == clear) {
+				
+				//Clear the radius, area and perimeter
+				radius.setText(null);
+				areaC.setText(null);
+				perimeterC.setText(null);
+			}
 		}
 	}
 	
