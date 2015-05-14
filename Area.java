@@ -121,13 +121,17 @@ public class Area extends JFrame{
 		add(allCircle);
 		add(allSquare);
 		add(allTriangle);
-		countC.addActionListener(new ButtonCount());
-		clearC.addActionListener(new ButtonClear());
+		countC.addActionListener(new ButtonCountC());
+		clearC.addActionListener(new ButtonClearC());
+		countS.addActionListener(new ButtonCountS());
+		clearS.addActionListener(new ButtonClearS());
+		countT.addActionListener(new ButtonCountT());
+		clearT.addActionListener(new ButtonClearT());
 		
 	}
 	
 	
-	private class ButtonCount implements ActionListener {
+	private class ButtonCountC implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
@@ -145,8 +149,43 @@ public class Area extends JFrame{
 		}
 	}
 	
+	private class ButtonCountS implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == countS) {
+				//get the side that user enter
+				sideSUser = Double.parseDouble(sideS.getText());
+			}
+			
+			//Create a square
+			Square square1 = new Square(sideSUser);
+			
+			//Print the result on text field
+			areaS.setText(String.format("%.2f",square1.getArea()));
+			perimeterS.setText(String.format("%.2f",square1.getPerimeter()));
+		}
+	}
 	
-	private class ButtonClear implements ActionListener {
+	private class ButtonCountT implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == countT) {
+				//get the side that user enter
+				sideTUser = Double.parseDouble(sideT.getText());
+			}
+			
+			//Create a square
+			RegularTriangle triangle1 = new RegularTriangle(sideTUser);
+			
+			//Print the result on text field
+			areaT.setText(String.format("%.2f",triangle1.getArea()));
+			perimeterT.setText(String.format("%.2f",triangle1.getPerimeter()));
+		}
+	}
+	
+	private class ButtonClearC implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
@@ -156,6 +195,34 @@ public class Area extends JFrame{
 				radius.setText(null);
 				areaC.setText(null);
 				perimeterC.setText(null);
+			}
+		}
+	}
+	
+	private class ButtonClearS implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == clearS) {
+				
+				//Clear the radius, area and perimeter
+				sideS.setText(null);
+				areaS.setText(null);
+				perimeterS.setText(null);
+			}
+		}
+	}
+	
+	private class ButtonClearT implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == clearT) {
+				
+				//Clear the radius, area and perimeter
+				sideT.setText(null);
+				areaT.setText(null);
+				perimeterT.setText(null);
 			}
 		}
 	}
