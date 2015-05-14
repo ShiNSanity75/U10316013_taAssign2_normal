@@ -5,19 +5,20 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**Main Method*/
-public class Area extends JFrame implements ActionListener {
+public class Area extends JFrame{
 	
 	//Create a button
 	JButton count = new JButton("Count");
 	JButton clear = new JButton("Clear");
 	
 	//Create TextField
-	JTextField radious = new JTextField(3);
+	JTextField radius = new JTextField(3);
 	JTextField areaC = new JTextField(3);
 	JTextField perimeterC = new JTextField(3);
 	
-	//Radious that user enter
-	double radiousUser;
+	//Radius that user enter
+	double radiusUser;
+
 	
 	public Area() {
 		
@@ -29,11 +30,11 @@ public class Area extends JFrame implements ActionListener {
 		JLabel circle = new JLabel("Circle");
 		titleCircle.add(circle);
 		
-		//Create a panel to let user enter radious
+		//Create a panel to let user enter radius
 		JPanel userCircle = new JPanel();
 		userCircle.setLayout(new GridLayout(1, 4, 10, 10));
 		userCircle.add(new JLabel("Radious"));
-		userCircle.add(radious); 
+		userCircle.add(radius); 
 		userCircle.add(count); //add button
 		userCircle.add(clear); //add button
 		setLayout(new FlowLayout());
@@ -54,24 +55,24 @@ public class Area extends JFrame implements ActionListener {
 		add(allCircle);
 		count.addActionListener(new ButtonCount());
 		
-		}
-	
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == count){
-		   //get the radious that user enter
-			radiousUser = Double.parseDouble(radious.getText());
-		}
 	}
+	
 	
 	private class ButtonCount implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//Create a circle
-			TestSimpleCircle circle1 = new TestSimpleCircle(radiousUser);
 			
-			//circle1.getArea();
-			circle1.getPerimeter();	
+			if(e.getSource() == count) {
+				//get the radius that user enter
+				radiusUser = Double.parseDouble(radius.getText());
+			}
+			
+			//Create a circle
+			TestSimpleCircle circle1 = new TestSimpleCircle(radiusUser);
+			
+			//Print the result on text field
 			areaC.setText(String.format("%.2f",circle1.getArea()));
+			perimeterC.setText(String.format("%.2f",circle1.getPerimeter()));
 		}
 	}
 	
