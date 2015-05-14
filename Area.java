@@ -36,6 +36,7 @@ public class Area extends JFrame{
 	
 	public Area() {
 		
+		setLayout(new GridLayout(3,1));
 		//Create a panel to put everthing of circle, square and triangle
 		JPanel allCircle = new JPanel();
 		JPanel allSquare = new JPanel();
@@ -63,7 +64,6 @@ public class Area extends JFrame{
 		userCircle.add(radius); 
 		userCircle.add(countC); //add button
 		userCircle.add(clearC); //add button
-		setLayout(new FlowLayout());
 		
 		JPanel userSquare = new JPanel();
 		userSquare.setLayout(new GridLayout(1, 4, 10, 10));
@@ -71,7 +71,6 @@ public class Area extends JFrame{
 		userSquare.add(sideS); 
 		userSquare.add(countS); //add button
 		userSquare.add(clearS); //add button
-		setLayout(new FlowLayout());
 		
 		JPanel userTriangle = new JPanel();
 		userTriangle.setLayout(new GridLayout(1, 4, 10, 10));
@@ -79,30 +78,29 @@ public class Area extends JFrame{
 		userTriangle.add(sideT); 
 		userTriangle.add(countT); //add button
 		userTriangle.add(clearT); //add button
-		setLayout(new FlowLayout());
 		
 		
 		//Create a panel to display the area and the perimeter
 		JPanel answerC = new JPanel();
-		answerC.setLayout(new GridLayout(1, 2, 10, 10));
-		userCircle.add(new JLabel("Area"));
-		userCircle.add(areaC);
-		userCircle.add(new JLabel("Perimeter"));
-		userCircle.add(perimeterC);
+		answerC.setLayout(new GridLayout(1, 4, 23, 0));
+		answerC.add(new JLabel("Area"));
+		answerC.add(areaC);
+		answerC.add(new JLabel("Perimeter"));
+		answerC.add(perimeterC);
 		
 		JPanel answerS = new JPanel();
-		answerS.setLayout(new GridLayout(1, 2, 10, 10));
-		userSquare.add(new JLabel("Area"));
-		userSquare.add(areaS);
-		userSquare.add(new JLabel("Perimeter"));
-		userSquare.add(perimeterS);
+		answerS.setLayout(new GridLayout(1, 2, 23, 10));
+		answerS.add(new JLabel("Area"));
+		answerS.add(areaS);
+		answerS.add(new JLabel("Perimeter"));
+		answerS.add(perimeterS);
 		
 		JPanel answerT = new JPanel();
-		answerT.setLayout(new GridLayout(1, 2, 10, 10));
-		userTriangle.add(new JLabel("Area"));
-		userTriangle.add(areaT);
-		userTriangle.add(new JLabel("Perimeter"));
-		userTriangle.add(perimeterT);
+		answerT.setLayout(new GridLayout(1, 2, 23, 10));
+		answerT.add(new JLabel("Area"));
+		answerT.add(areaT);
+		answerT.add(new JLabel("Perimeter"));
+		answerT.add(perimeterT);
 		
 		
 		//put panel together
@@ -118,9 +116,9 @@ public class Area extends JFrame{
 		allTriangle.add(userTriangle);
 		allTriangle.add(answerT);
 		
-		add(allCircle);
-		add(allSquare);
-		add(allTriangle);
+		this.add(allCircle);
+		this.add(allSquare);
+		this.add(allTriangle);
 		countC.addActionListener(new ButtonCountC());
 		clearC.addActionListener(new ButtonClearC());
 		countS.addActionListener(new ButtonCountS());
@@ -176,7 +174,7 @@ public class Area extends JFrame{
 				sideTUser = Double.parseDouble(sideT.getText());
 			}
 			
-			//Create a square
+			//Create a triangle
 			RegularTriangle triangle1 = new RegularTriangle(sideTUser);
 			
 			//Print the result on text field
@@ -230,7 +228,7 @@ public class Area extends JFrame{
 	public static void main(String[] args) {
 		Area frame = new Area(); //Create a frame
 	    frame.setTitle("U10316013_GeoCalculate"); //set the title of frame
-	    frame.setSize(800, 350); //Set the size of frame
+	    frame.setSize(350, 450); //Set the size of frame
 	    frame.setLocationRelativeTo(null); // Center the frame
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setVisible(true); //Display the frame
