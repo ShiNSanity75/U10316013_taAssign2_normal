@@ -5,16 +5,19 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**Main Method*/
-public class Area extends JFrame{
+public class Area extends JFrame implements ActionListener {
 	
 	//Create a button
 	JButton count = new JButton("Count");
 	JButton clear = new JButton("Clear");
 	
-
+	//Create TextField
 	JTextField radious = new JTextField(3);
 	JTextField areaC = new JTextField(3);
 	JTextField perimeterC = new JTextField(3);
+	
+	//Radious that user enter
+	double radiousUser;
 	
 	public Area() {
 		
@@ -30,9 +33,9 @@ public class Area extends JFrame{
 		JPanel userCircle = new JPanel();
 		userCircle.setLayout(new GridLayout(1, 4, 10, 10));
 		userCircle.add(new JLabel("Radious"));
-		userCircle.add(radious);
-		userCircle.add(count);
-		userCircle.add(clear);
+		userCircle.add(radious); 
+		userCircle.add(count); //add button
+		userCircle.add(clear); //add button
 		setLayout(new FlowLayout());
 		
 		//Create a panel to display the area and the perimeter
@@ -43,12 +46,33 @@ public class Area extends JFrame{
 		userCircle.add(new JLabel("Perimeter"));
 		userCircle.add(perimeterC);
 		
+		//put panel together
 		allCircle.add(titleCircle);
 		allCircle.add(userCircle);
 		allCircle.add(answer);
 		
 		add(allCircle);
+		count.addActionListener(new ButtonCount());
 		
+		}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == count){
+		   //get the radious that user enter
+			radiousUser = Double.parseDouble(radious.getText());
+		}
+	}
+	
+	private class ButtonCount implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			//Create a circle
+			TestSimpleCircle circle1 = new TestSimpleCircle(radiousUser);
+			
+			//circle1.getArea();
+			circle1.getPerimeter();	
+			areaC.setText(String.format("%.2f",circle1.getArea()));
+		}
 	}
 	
 	public static void main(String[] args) {
